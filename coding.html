@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Website</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+		<link rel="stylesheet" href="page.css">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<header class="d-flex justify-content-center py-3 navbar">
+				<a class="navbar-brand" href="index.html">Sam S.</a>
+				<ul class="nav nav-pills">
+					<li class="nav-item"><a class="nav-link active" href="coding.html">Coding Projects</a></li>
+					<li class="nav-item"><a class="nav-link" href="radio.html">Amateur Radio</a></li>
+					<li class="nav-item"><a class="nav-link" href="astronomy.html">Astronomy</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html">About Me</a></li>
+				</ul>
+			</header>
+		</div>
+		<div class="container-md fill-height rounded border mainContent">
+<div class="d-flex justify-content-center"><h3 class="mainContent"><br>Here are some interesting projects I've worked on:</h3></div>
+			<h5 class="mainContent">Home networking: </h5>
+			<p>&emsp;I run custom solutions for several aspects of my home network.  The routing and access points are run on a MikroTik hAP ax3.  It's setup with a guest network that blocks all outgoing LAN requests, to keep those pesky smart devices at bay.  I have a headless raspberry pi server that runs several services for the network.  It runs <a href="https://pi-hole.net/">Pi-hole</a>, which is a DNS based network ad-blocker.  It also runs <a href="https://www.home-assistant.io/">home assistant</a>, which consolidates control of many different smart home devices into one system, and allows easy automation.  The last service it runs is <a href="https://jellyfin.org/">Jellyfin</a>, which is an open source media server, which allows me to watch my ripped DVDs on any device.  All the services are run in podman containers (a rootless docker alternative).</p>
+			<img src="img/homeassistantmain.png" alt="Home Assistant" class="w-25"> <img src="img/homeassistantremote.png" alt="Home Assistant" class="w-25"> <img src="img/pihole.png" alt="Pi-hole" class="w-50">
+			<h5><br><a href="">Brain Control: </a></h5>
+			<p>&emsp; This is a project we did for our embedded systems class.  The base of the project is a mindflex headset, which comes from a board game.  It's modified according to <a href="https://frontiernerds.com/brain-hack">this guide</a>.  The headset contains a neurosky chip, which acts as a 1 electrode EEG.  The chip automatically filters the data and performs a fourier transform.  This data is then sent to the controller in the headset, which forwards it wirelessly to the game.  For the project, the chip had wires soldered to intercept the serial data, which is then passed to an Arduino.  There is an Arduino <a href="https://github.com/kitschpatrol/Brain">library</a> that processes the serial data and allows the parameters to be accessed with getter functions.  The raw signal strengths are available, but we use the calculated "concetration" value.  We wrote a second library which extends the original, allowing the concentration to be constantly monitored and a given pin set high when it goes above a set threshold.  We used this along with a relay to create a plug that would power when you concentrate on it, which we used with a lamp.  It's not the most practical in its current state, but there's something really satisfying about turning on a lamp with your mind.</p>
+			<img src="img/braincontrol.jpg" alt="Brain Control Headset" class="w-50">
+			<h5><br>Minecraft Shaders:</h5>
+			<p>&emsp; This is project isn't finished yet, but I want to show off some screenshots all the same.  This is a set of GLSL shading programs I wrote for Iris, a minecraft mod that allows minecraft's rendering code to be overwritten by user code.  It's been quite the challenge, as it seems all of Iris' documentation is written for people with lots of prior experience in GLSL and shading, which I had none of when I started the project.  Thus far the project adds shadows, dynamic light color from the sun and moon, dynamic lighting for held objects, and other small changes.  I'm currently working on better looking water and post processing effects.  It still has a lot of work to be done, but it's been one of my most challenging projects in terms of programming and math (rendering is basically all linear algebra).  Here are some screenshots from ingame, with and without shaders:  </p>
+			<p>Before:</p>
+			<img src="img/dayvanilla.png" alt="day no shaders" class="w-50"><img src="img/nightvanilla.png" alt="night no shaders" class="w-50">
+			<p>After:</p>
+			<img src="img/dayshader.png" alt="day shaders" class="w-50"><img src="img/nightshader.png" alt="night shaders" class="w-50">
+			<h5><br><a href="https://github.com/samobot/Dyad">Dyad: </a></h5>
+			<p>&emsp; This is project I created in high school for the state science fair.  The idea was to allow control of many brands of smart home devices to be controlled in one app (similar to home assistant, which I hadn't heard of at the time).  Ultimately, I was limited by the devices we had at home, so I was  only able to implement support for Philips Hue and LIFX smart bulbs.  I planned for Honeywell thermostat support, but they had no developer API at the time.  It aims to make the setup process as simple as possible and be super easy to use.  I created it with my grandparents (who sometimes struggle with smart devices) in mind.  Making the app taught me how to use dynamic strings, and the app is either in English, Spanish or Russian depending on your device language.  The project was also my first time using threads, as Android does not allow you to run blocking operations on the main thread (to prevent UI lockups)</p>
+			<img src="https://raw.githubusercontent.com/samobot/Dyad/master/adddevicesscreen.png" alt="Add Device Screen" class="w-25"><img src="https://raw.githubusercontent.com/samobot/Dyad/master/huelinkscreen.png" alt="Hue Setup Screen" class="w-25"><img src="https://raw.githubusercontent.com/samobot/Dyad/master/lifxlinkscreen.png" alt="LIFX Setup Screen" class="w-25">
+			<h5><br><a href="https://github.com/samobot/hashi-vita">Hashi-vita:</a></h5>
+			<p>&emsp; This is a super basic port of the game Hashi to the PS Vita.  Hashi is a bridge building puzzle game, where the object is to connect all the islands without using too many bridges.  I created it after I modded my Vita and wanted to try developing for it.  It's built using <a href="https://vitasdk.org/">VitaSDK</a> and was my first time really developing anything for a console.  It was a super fun to program for and I still play it sometimes.  </p>
+			<img src="https://raw.githubusercontent.com/samobot/hashi-vita/main/hashiscreenshot.png" alt="Hashi Screenshot" class="w-50">
+			<h5><br><a href="https://github.com/samobot/terminal-mandelbrot">Terminal Mandelbrot</a></h5>
+			<p>&emsp; This program was created because I wanted an excuse to learn the Ncurses library.  It generates the mandelbrot set in the terminal and allows you to move around and zoom in.  Ncurses is a super useful library for creating TUIs (text user interfaces), a sort of psuedo-GUI within a terminal program. </p>
+			<img src="img/mandelbrot1.png" alt="Mandelbrot 1" class="w-50"><img src="img/mandelbrot2.png" alt="Mandelbrot 2" class="w-50">
+		</div>
+
+
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+.mainContent {
+	background-color: #303446;
+	color: #c6d0f5;
+	border-color: #ef9f76 !important;
+}
+
+a {
+	color: #ef9f76;
+}
+
+html, body {
+	background-color: #232634;
+}
+
+.navbar {
+	background-color: #292c3c;
+}
+
+.nav-link {
+	color: #c6d0f5;
+	--bs-navbar-hover-color: #ef9f76;
+}
+
+.nav-link:hover {
+	color: #ef9f76;
+}
+
+.navbar-brand {
+	--bs-navbar-brand-color: #c6d0f5;
+}
+
+.navbar-brand:hover {
+	color: #c6d0f5;
+}
+
+.nav-pills {
+	--bs-nav-pills-link-active-bg: #ef9f76;
+	--bs-nav-pills-link-active-color: #232634;
+}
